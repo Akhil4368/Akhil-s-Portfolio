@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akhil | Developer Portfolio</title>
+    
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base Variables and Reset */
+        :root {
+            --primary-color: #0ef; 
+            --bg-color: #1f242d;
+            --second-bg-color: #323946;
+            --text-color: #fff;
+            --main-font: 'Poppins', sans-serif;
+            --type-speed: 2s; 
+            --blink-speed: 0.7s; 
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            border: none;
+            outline: none;
+            scroll-behavior: smooth;
+        }
+
+        /* Set root size for medium scale (1rem = 10px on desktop) */
+        html {
+            font-size: 62.5%; 
+        }
+
+        body {
+            background: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--main-font);
+            overflow-x: hidden;
+        }
+
+        /* Utility Classes */
+        .section {
+            min-height: 100vh;
+            padding: 8rem 8% 2rem; 
+        }
+
+        .heading {
+            text-align: center;
+            font-size: 3.5rem; 
+            margin-bottom: 2rem;
+        }
+
+        .heading span {
+            color: var(--primary-color);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--primary-color);
+            border-radius: 4rem;
+            box-shadow: 0 0 0.8rem var(--primary-color);
+            font-size: 1.4rem; 
+            color: var(--second-bg-color);
+            font-weight: 600;
+            transition: 0.5s ease;
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            box-shadow: none;
+            transform: scale(1.05);
+        }
+
+        /* Header and Navbar */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 8%;
+            background: var(--bg-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 2rem; 
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        .navbar a {
+            font-size: 1.4rem; 
+            color: var(--text-color);
+            margin-left: 3rem;
+            transition: 0.3s;
+        }
+
+        .navbar a:hover,
+        .navbar a.active {
+            color: var(--primary-color);
+        }
+
+        #menu-icon {
+            font-size: 2.8rem;
+            color: var(--text-color);
+            cursor: pointer;
+            display: none;
+        }
+
+        /* Home Section */
+        .home {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            padding-top: 10rem; 
+        }
+
+        .home-content h3 {
+            font-size: 2.5rem; 
+        }
+
+        .home-content h1 {
+            font-size: 4.5rem; 
+            line-height: 1.2;
+            color: var(--primary-color);
+            margin-top: 0.5rem;
+        }
+
+        .home-content p {
+            font-size: 1.5rem;
+            margin: 1.5rem 0 3rem;
+            max-width: 600px;
+            overflow: hidden; 
+            white-space: nowrap; 
+            border-right: 0.15em solid var(--primary-color); 
+            animation: 
+                typing var(--type-speed) steps(40, end) forwards,
+                blink-caret var(--blink-speed) step-end infinite;
+            width: 0; 
+        }
+
+        /* Typing Effect Animation */
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        /* Blinking Cursor Animation */
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary-color); }
+        }
+
+
+        .home-img img {
+            width: 20vw; 
+            min-width: 200px;
+            border-radius: 50%;
+            box-shadow: 0 0 1rem var(--primary-color);
+            transition: 0.5s ease;
+        }
+
+        .home-img img:hover {
+            box-shadow: 0 0 2rem var(--primary-color);
+        }
+
+        .social-media a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 3.5rem;
+            height: 3.5rem;
+            background: transparent;
+            border: 0.2rem solid var(--primary-color);
+            border-radius: 50%;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin: 0.5rem 1rem 2rem 0;
+            transition: 0.5s ease;
+        }
+
+        .social-media a:hover {
+            background: var(--primary-color);
+            color: var(--second-bg-color);
+            box-shadow: 0 0 1rem var(--primary-color);
+        }
+
+
+        /* About Section */
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: left;
+            line-height: 1.8;
+        }
+
+        .summary-paragraph, .goal-statement {
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .experience-list {
+            background: var(--second-bg-color);
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            border-left: 0.5rem solid var(--primary-color);
+        }
+
+        .experience-list h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .experience-list ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .experience-list li {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+
+        /* Skills Section */
+        .skills-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+        }
+
+        .skill-card {
+            /* Adjusted to take up more space since one card is removed */
+            flex: 1 1 40%; 
+            background: var(--second-bg-color);
+            padding: 2.5rem 2rem 3rem;
+            border-radius: 1.5rem;
+            text-align: center;
+            border: 0.2rem solid var(--bg-color);
+            transition: 0.5s ease;
+        }
+
+        .skill-card:hover {
+            border-color: var(--primary-color);
+            transform: scale(1.02);
+        }
+
+        .skill-card h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .skill-card p {
+            font-size: 1.4rem;
+            line-height: 1.6;
+        }
+
+
+        /* Portfolio Section */
+        .portfolio-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 2rem;
+        }
+
+        .portfolio-box {
+            position: relative;
+            border-radius: 1.5rem;
+            box-shadow: 0 0 0.8rem rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            display: flex;
+            height: 250px; 
+        }
+
+        .portfolio-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s ease;
+        }
+
+        .portfolio-box:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-layer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.1), var(--primary-color));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 0 3rem;
+            transform: translateY(100%);
+            transition: 0.5s ease;
+        }
+
+        .portfolio-box:hover .portfolio-layer {
+            transform: translateY(0);
+        }
+
+        .portfolio-layer h4 {
+            font-size: 2.5rem;
+            color: var(--bg-color);
+        }
+
+        .portfolio-layer p {
+            font-size: 1.4rem;
+            margin: 0.3rem 0 1rem;
+            color: var(--bg-color);
+        }
+
+        .portfolio-layer a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 4rem;
+            height: 4rem;
+            background: var(--text-color);
+            border-radius: 50%;
+        }
+
+        .portfolio-layer a i {
+            font-size: 1.8rem;
+            color: var(--second-bg-color);
+        }
+
+
+        /* Contact Section */
+        .contact form {
+            max-width: 60rem;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact form .input-box {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .contact form .input-box input,
+        .contact form textarea {
+            width: 100%;
+            padding: 1.2rem;
+            font-size: 1.4rem;
+            color: var(--text-color);
+            background: var(--second-bg-color);
+            border-radius: 0.8rem;
+            margin: 0.7rem 0;
+            resize: none;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .contact form .input-box input:focus,
+        .contact form textarea:focus {
+            box-shadow: 0 0 0.8rem var(--primary-color);
+        }
+
+        .contact form .input-box input {
+            width: 49%;
+        }
+
+        .contact form textarea {
+            height: 15rem; 
+        }
+
+
+        /* Footer */
+        .footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem 8%;
+            background: var(--second-bg-color);
+            font-size: 1.4rem;
+        }
+
+        /* ANIMATION CLASSES */
+        .animate-fade-in { opacity: 0; transform: translateY(15px); animation: fadeIn 0.8s ease forwards; }
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-on-scroll { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+        .animate-on-scroll.show { opacity: 1; transform: translateY(0); }
+        .home-content { animation-delay: 0.3s; }
+        .home-img { animation-delay: 0.6s; } 
+
+
+        /* RESPONSIVENESS (Media Queries) */
+        @media (max-width: 991px) {
+            .section { padding: 8rem 4% 2rem; }
+            .header { padding: 1.5rem 4%; }
+        }
+
+        @media (max-width: 768px) {
+            #menu-icon { display: block; }
+
+            .navbar {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                padding: 1rem 4%;
+                background: var(--second-bg-color);
+                box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+                display: none;
+            }
+            
+            .navbar.active { display: block; }
+            .navbar a {
+                display: block;
+                font-size: 1.8rem;
+                margin: 1rem 0;
+            }
+            
+            .home { flex-direction: column-reverse; text-align: center; gap: 2rem; }
+            .home-img img { width: 60vw; margin-top: 3rem; }
+            .home-content h1 { font-size: 4rem; }
+            .heading { font-size: 3rem; }
+            
+            /* Ensure typing animation doesn't break mobile layout */
+            .home-content p {
+                 white-space: normal; 
+                 width: auto; 
+                 border-right: none; 
+                 animation: fadeIn 0.8s ease forwards; 
+                 opacity: 0;
+            }
+
+            @media (min-width: 450px) and (max-width: 768px) {
+                .home-content p {
+                    white-space: nowrap; 
+                    max-width: 90vw;
+                }
+            }
+            
+            .skill-card {
+                /* Let skill cards stack fully on mobile */
+                flex: 1 1 100%; 
+            }
+
+
+            .contact form .input-box input { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <a href="#" class="logo">Akhil</a>
+        <i class="fas fa-bars" id="menu-icon"></i>
+        <nav class="navbar">
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="home" id="home">
+        <div class="home-content animate-fade-in">
+            <h3>Hello, I am</h3>
+            <h1>Akhil</h1>
+            
+            <p>A DevOps Engineer.             </p>
+            <div class="social-media">
+                <a href="https://www.linkedin.com/in/akhil-pathania-991361267" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/Akhil4368" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+            <a href="#" class="btn">Download CV</a>
+        </div>
+        <div class="home-img animate-fade-in">
+            <img src="assets/akhil-profile-photo.jpg" alt="Akhil's Professional Photo"> 
+        </div>
+    </section>
+
+    <section class="about section" id="about">
+        <h2 class="heading">About <span>Me</span></h2>
+        <div class="about-content animate-on-scroll">
+            <p class="summary-paragraph">
+                I'm an entry-level technologist passionate about both **DevOps engineering** and **Front-End development**. My background provides a comprehensive view of the software lifecycle, from intuitive user interfaces to robust deployment pipelines.
+            </p>
+            
+            <div class="experience-list">
+                <h3>Key Education & Experience:</h3>
+                <ul>
+                    <li>**MCA Graduate:** Completed my Master of Computer Applications from **CGC Landran**.</li>
+                    <li>**BCA Graduate:** Completed my Bachelor of Computer Applications from **HPU Shimla**.</li>
+                    <li>**DevOps Intern (3 Months):** Currently focused on **CI/CD pipeline creation**, **Docker**, and basic infrastructure automation.</li>
+                    <li>**MERN Stack Developer (6 Months):** Gained practical expertise in building interactive, data-driven applications using MongoDB, Express, React, and Node.js (foundational for front-end).</li>
+                </ul>
+            </div>
+            
+            <p class="goal-statement">
+                My objective is to seamlessly combine efficient development practices with reliable, automated deployment. I aim to create impactful digital solutions that are both technically sound and delightful for users.
+            </p>
+        </div>
+    </section>
+
+    <section class="skills section" id="skills">
+        <h2 class="heading">My <span>Skills</span></h2>
+        <div class="skills-container">
+            
+            <div class="skill-card animate-on-scroll">
+                <h3>DevOps & Cloud</h3>
+                <p><strong>DevOps Tools:</strong> Docker, Kubernetes (Basic), Git/GitHub, CI/CD Pipelines (Jenkins/GitLab CI).</p>
+            </div>
+            
+            <div class="skill-card animate-on-scroll">
+                <h3>Front-End & MERN</h3>
+                <p><strong>Frontend:</strong> React.js, JavaScript, HTML5, CSS3.<br><strong>Backend (MERN):</strong> Node.js, Express.js, MongoDB.</p>
+            </div>
+            
+            </div>
+    </section>
+
+    <section class="portfolio section" id="portfolio">
+        <h2 class="heading">Latest <span>Projects</span></h2>
+
+        <div class="portfolio-container">
+
+            <div class="portfolio-box animate-on-scroll">
+                <img src="assets/mern-ecommerce-project.jpg" alt="MERN Stack E-commerce Platform">
+                <div class="portfolio-layer">
+                    <h4>Full-Stack E-Commerce Platform</h4>
+                    <p>A responsive application built using the **MERN Stack** with user authentication and robust APIs.</p>
+                    <a href="[Link to Live Demo or GitHub Repo]"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+
+            <div class="portfolio-box animate-on-scroll">
+                <img src="assets/devops-ci-cd-pipeline.png" alt="CI/CD Pipeline Automation Project">
+                <div class="portfolio-layer">
+                    <h4>CI/CD Pipeline Automation</h4>
+                    <p>Automated deployment workflow using **Docker** and CI tools, focusing on Infrastructure as Code principles.</p>
+                    <a href="[Link to GitHub Repo or detailed blog post]"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="contact section" id="contact">
+        <h2 class="heading">Contact <span>Me</span></h2>
+
+        <form action="#" method="POST" class="animate-on-scroll"> 
+            
+            <div class="input-box">
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email Address" required>
+            </div>
+            
+            <div class="input-box">
+                <input type="number" placeholder="Mobile Number" required>
+                <input type="text" placeholder="Email Subject" required>
+            </div>
+            
+            <textarea name="message" id="message" cols="30" rows="8" placeholder="Your Message" required></textarea>
+            
+            <input type="submit" value="Send Message" class="btn">
+        
+        </form>
+    </section>
+
+    <footer class="footer">
+        <p>Copyright &copy; 2025 by Akhil | All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // --- 1. Navbar Toggle for Mobile Menu ---
+        const menuIcon = document.querySelector('#menu-icon');
+        const navbar = document.querySelector('.navbar');
+
+        if (menuIcon) {
+            menuIcon.onclick = () => {
+                menuIcon.classList.toggle('fa-times');
+                navbar.classList.toggle('active');
+            };
+        }
+
+
+        // --- 2. Scroll-Based Animation (Intersection Observer) ---
+        const sectionsToAnimate = document.querySelectorAll('.animate-on-scroll');
+        const observerOptions = {
+            root: null, 
+            threshold: 0.1, 
+            rootMargin: "0px 0px -50px 0px" 
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show'); 
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        sectionsToAnimate.forEach(section => {
+            observer.observe(section);
+        });
+
+
+        // --- 3. Active Link State on Scroll ---
+        window.onscroll = () => {
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(sec => {
+                const top = window.scrollY;
+                const offset = sec.offsetTop - 150; 
+                const height = sec.offsetHeight;
+                const id = sec.getAttribute('id');
+
+                if (top >= offset && top < offset + height) {
+                    document.querySelectorAll('.navbar a').forEach(links => {
+                        links.classList.remove('active');
+                        document.querySelector('.navbar a[href*=' + id + ']').classList.add('active');
+                    });
+                }
+            });
+
+            // Close the mobile menu automatically on scroll
+            if (menuIcon && navbar && navbar.classList.contains('active')) {
+                menuIcon.classList.remove('fa-times');
+                navbar.classList.remove('active');
+            }
+        };
+    </script>
+    </body>
+</html>
