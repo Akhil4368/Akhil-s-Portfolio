@@ -1,0 +1,42 @@
+# Name of the workflow
+name: Deploy Portfolio to GitHub Pages
+
+# When the workflow should run
+on:
+  # Triggers the workflow on pushes to the main branch
+  push:
+    branches:
+      - main
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs
+jobs:
+  # This job handles the deployment
+  build-and-deploy:
+    # Run on the latest Ubuntu runner
+    runs-on: ubuntu-latest
+    
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # 1. Checkout the repository code
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        # Important: Fetch all history for use with the gh-pages action
+        with:
+          fetch-depth: 0 
+
+      # 2. Deploy to GitHub Pages
+      # This action automatically handles pushing the contents of the current directory 
+      # (your built site files) to the 'gh-pages' branch.
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          # The required token for deployment (automatically available)
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # The branch to deploy to (GitHub Pages default)
+          publish_branch: gh-pages
+          # The directory containing the deployable files. 
+          # Since your portfolio is a simple static site with no build step, 
+          # the root directory ('.') contains all the files.
+          publish_dir: .
